@@ -39,6 +39,9 @@ public class Tree {
 			if (Objects.equals(node.getParentId(), parent.getId())) {
 				parent.getChildren().add(node);
 				buildTree(node);
+				if (parent.isChecked()&&!node.isChecked()) {
+					parent.setChecked(false);
+				}
 			}
 		}
 				

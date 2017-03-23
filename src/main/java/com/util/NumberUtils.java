@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
 
 /**
  * @description:数字工具类
- * @itemName:swell
+ * @itemName:
  */
 public class NumberUtils extends org.apache.commons.lang.math.NumberUtils {
 	public static int parseInt(Object str) {
@@ -57,37 +57,20 @@ public class NumberUtils extends org.apache.commons.lang.math.NumberUtils {
 			str = "0" + str;
 		return str;
 	}
-	/**
-	 * 
-	 * @param code
-	 * @param 保留num的位数,num 代表长度   
-	 * 0 代表前面补充0     
-	 * d 代表参数为正数型 
-	 * @return
-	 */
-	public static String formatNumber(String code, int num) {
-        // 保留num的位数
-		// 0 代表前面补充0     
-        // num 代表长度    
-        // d 代表参数为正数型 
-		String result = String.format("%0" + num + "d", Integer.parseInt(code));
-
-        return result;
-	}
 	public static double formatDouble(double value,int digitNum){
 		  BigDecimal doublevalue = new BigDecimal(value); 
 		  return doublevalue.setScale(digitNum, BigDecimal.ROUND_HALF_UP).doubleValue();
 	  }
 	public static String numUnitConver(double num) {
 		DecimalFormat df = new DecimalFormat("#0.00");
-		if(num>1000000000000L||num<-1000000000000L){
-			num = num/1000000000000L;
+		if(num>1000000000000D||num<-1000000000000D){
+			num = Ariths.div(num, 1000000000000D);
 			return df.format(num)+"万亿";
 		}else if(num>100000000||num<-100000000){
-			num = num/100000000;
+			num = Ariths.div(num, 100000000D);
 			return df.format(num)+"亿";
 		}else if(num>10000||num<-10000){
-			num = num/10000;
+			num = Ariths.div(num, 10000D);
 			return df.format(num)+"万";
 		}
 		return df.format(num);
@@ -110,6 +93,7 @@ public class NumberUtils extends org.apache.commons.lang.math.NumberUtils {
 		return true;
 	}
 	public static void main(String[] arg) {
-		System.out.println(formatNumber("150", 5));
+		System.out.println(NumberUtils.isNumber("-0.1")+"==="+isNum("-0.3"));
+		System.out.println(numUnitConver(34641.90*10000));
 	}
 }

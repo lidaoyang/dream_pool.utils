@@ -3,7 +3,6 @@ package com.util;
 import java.net.URL;
 import java.net.URLConnection;
 import java.sql.Timestamp;
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -319,7 +318,15 @@ public class DateUtils {
 		}
 		return ts;
 	}
-	// 指定日期加减天数
+	// 指定日期加减分钟
+		public static Date getDateMinute(Date date, Integer minute) {
+			// yyyy-MM-dd HH:mm:ss
+			Calendar calendar = Calendar.getInstance();
+			calendar.setTime(date);
+			calendar.add(Calendar.MINUTE, minute);
+			return calendar.getTime();
+		}
+	// 指定日期加减小时
 	public static Date getDateHour(Date date, Integer hours) {
 		// yyyy-MM-dd HH:mm:ss
 		Calendar calendar = Calendar.getInstance();
@@ -744,7 +751,7 @@ public class DateUtils {
 	}
 
 	public static void main(String[] args) {
-       System.out.println(convertTimeZoneToCH(new Date()));
+       System.out.println(daysBetween(StrToDate("2017-02-18", "yyyy-MM-dd"),StrToDate("2017-02-20", "yyyy-MM-dd")));
 		
 	}
 }
