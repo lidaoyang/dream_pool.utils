@@ -529,7 +529,7 @@ public class FileUtils {
 					}
 					if (lineTxt.endsWith("HK")) {
 						lineTxt = lineTxt.replace(" HK", "");
-						lineTxt = NumberUtils.formatNumber(lineTxt, 5);
+						lineTxt = String.format("%05d", Integer.valueOf(lineTxt));
 					}
 					result.add(lineTxt);
 				}
