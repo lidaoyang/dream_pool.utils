@@ -474,23 +474,6 @@ public class Common {
 		}
 		return ret;
 	}
-	public static long del_keys(String qkey) {
-		Jedis jedis = RedisClient.getJedis();
-		long ret=0;
-		if (jedis != null) {
-			try {
-				Set<String> keys = jedis.keys(qkey);
-				for (String key : keys) {
-					ret = jedis.del(key);
-				}
-			} catch (Exception e) {
-				e.printStackTrace();
-			} finally {
-				RedisClient.returnRes(jedis);
-			}
-		}
-		return ret;
-	}
 	public static byte[] serialize(Object value) {  
         if (value == null) {  
             throw new NullPointerException("Can't serialize null");  
