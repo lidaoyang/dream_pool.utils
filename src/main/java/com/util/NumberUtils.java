@@ -75,7 +75,23 @@ public class NumberUtils extends org.apache.commons.lang.math.NumberUtils {
 		}
 		return df.format(num);
 	}
+	/**
+	 * 
+	 * @param code
+	 * @param 保留num的位数,num 代表长度   
+	 * 0 代表前面补充0     
+	 * d 代表参数为正数型 
+	 * @return
+	 */
+	public static String formatNumber(String code, int num) {
+        // 保留num的位数
+		// 0 代表前面补充0     
+        // num 代表长度    
+        // d 代表参数为正数型 
+		String result = String.format("%0" + num + "d", Integer.parseInt(code));
 
+        return result;
+	}
 	public static boolean isNumeric(String str) {
 		Pattern pattern = Pattern.compile("-?[0-9]*.?[0-9]+");
 		Matcher isNum = pattern.matcher(str);
