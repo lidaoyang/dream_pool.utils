@@ -22,7 +22,7 @@ public class FileProgressMonitor extends TimerTask implements SftpProgressMonito
         this.fileSize = fileSize;
     }
     
-    @Override
+    
     public void run() {
         if (!isEnd()) { // 判断传输是否已结束
             System.out.println("Transfering is in progress.");

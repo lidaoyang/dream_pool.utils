@@ -1057,7 +1057,7 @@ public class Common {
 	private static void asyncSendPush(final String u_id, final String token,final String type,
 			final JSONObject json) {
 		Thread thread = new Thread(new Runnable() {
-			@Override
+			
 			public void run() {
 				// TODO Auto-generated method stub
 				try {
